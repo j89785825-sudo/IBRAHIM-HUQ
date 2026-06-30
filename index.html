@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image.png" href="img/ajeer.PNG">
+    <title>تصريح أجير</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', sans-serif; margin: 0; padding: 0; background-color: #f8fafc; }
+
+        /* Floating Question Mark */
+        .floating-help {
+            position: fixed; bottom: 30px; left: 20px; width: 55px; height: 55px;
+            background-color: #1d357e; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; color: white;
+            font-size: 28px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 9999; cursor: pointer; line-height: 0; transition: transform 0.3s ease;
+        }
+        .floating-help:hover { transform: scale(1.1); }
+
+        /* Toast Design */
+        #copy-toast {
+            position: fixed; top: -100px; left: 0; right: 0;
+            background: white; padding: 12px 20px; display: flex;
+            justify-content: space-between; align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: top 0.4s ease;
+            z-index: 10000; border-bottom: 1px solid #eee;
+        }
+        #copy-toast.show { top: 0; }
+        .toast-content { display: flex; align-items: center; gap: 12px; width: 100%; justify-content: space-between; }
+        .toast-text { color: #374151; font-size: 16px; font-weight: 600; }
+        .toast-check-icon { 
+            background: #2ecc71; color: white; border-radius: 50%; 
+            width: 32px; height: 32px; display: flex; align-items: center; 
+            justify-content: center; font-size: 18px;
+        }
+        .toast-close-x { color: #9ca3af; font-size: 22px; cursor: pointer; font-weight: bold; }
+
+        /* Captcha & Buttons */
+        .captcha-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 2000;
+            backdrop-filter: blur(3px);
+        }
+        .captcha-card {
+            background: white; padding: 30px; border-radius: 12px; width: 90%; max-width: 380px; 
+            text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .icon-circle-pop {
+            width: 70px; height: 70px; background-color: #4a90e2; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+            color: white; font-size: 40px; font-weight: bold; line-height: 0;
+        }
+        .recaptcha-box {
+            background: #f9f9f9; border: 1px solid #d3d3d3; border-radius: 3px;
+            width: 100%; max-width: 300px; height: 74px; margin: 20px auto; display: flex;
+            align-items: center; padding: 0 12px; justify-content: space-between; direction: ltr;
+        }
+        .checkbox-container { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+        .fake-checkbox { width: 24px; height: 24px; border: 2px solid #c1c1c1; background: #fff; border-radius: 2px; position: relative; }
+        .fake-checkbox.checked::after { content: '✓'; position: absolute; top: -6px; left: 2px; color: #00aa44; font-size: 22px; font-weight: bold; }
+        .btn-blue-solid {
+            background-color: #1e3a8a; color: white; border: none; padding: 14px; 
+            border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 20px;
+        }
+
+        /* Footer */
+        .footer { text-align: center; padding: 40px 20px; background: #fff; border-top: 1px solid #eee; }
+        .footer-logo-main { width: 80px; margin-bottom: 20px; }
+        .footer-links-container { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+        .footer-link { color: #64748b; text-decoration: none; font-size: 14px; }
+        .footer-copyright { color: #64748b; font-size: 14px; margin-bottom: 20px; direction: rtl; }
+        .footer-lang { font-weight: 600; color: #1e293b; margin-bottom: 25px; display: block; }
+    </style>
+</head>
+<body>
+
+<div class="floating-help">؟</div>
+
+<div id="copy-toast">
+    <div class="toast-content">
+        <span class="toast-close-x" onclick="closeToast()">×</span>
+        <span class="toast-text">تم نسخ الرابط</span>
+        <div class="toast-check-icon">✓</div>
+    </div>
+</div>
+
+<header class="header">
+    <div class="menu-icon"><span></span><span></span><span></span></div>
+    <img src="img/ajeer.PNG" alt="Ajeer" class="logo-top">
+</header>
+
+<main class="container">
+    <h1 class="main-title">تصريح أجير لحلول الموارد <br>البشرية</h1>
+
+            <div id="real-data">
+            <div class="card">
+                <div class="card-header">معلومات التصريح</div>
+                <div class="card-body">
+                    <div class="data-row"><label>اسم الموظف:</label> <span>MD MOMINUL ISLAM</span></div>
+                    <div class="data-row"><label>حالة التصريح:</label> <span class="badge">نشيط</span></div>
+                    <div class="data-row"><label>تاريخ بداية التصريح:</label> <span>2026-06-26</span></div>
+                    <div class="data-row"><label>تاريخ إنتهاء التصريح:</label> <span>2026-09-25</span></div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">المنشأة المستفيدة</div>
+                <div class="card-body">
+                    <div class="data-row"><label>اسم المنشأة:</label> <span>شركة القمة المتألقة للتشفيل والصيانة</span></div>
+                    <div class="data-row"><label>رقم المنشأة:</label> <span>4-405461</span></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">شركة الإستقدام</div>
+                <div class="card-body">
+                    <div class="data-row"><label>اسم المنشأة:</label> <span>شركة نلت للوقود</span></div>
+                    <div class="data-row"><label>رقم المنشأة:</label> <span>20-51040857</span></div>
+                </div>
+            </div>
+
+            <button class="btn-blue-solid" id="copyBtn" onclick="copyLink()">نسخ رابط الصفحة 🔗</button>
+        </div>
+    </main>
+
+<footer class="footer">
+    <img src="img/ajeer.PNG" class="footer-logo-main">
+    <div class="footer-links-container">
+        <a href="#" class="footer-link">سياسات الخصوصية</a>
+        <a href="#" class="footer-link">الشروط والأحكام</a>
+    </div>
+    <p class="footer-copyright">
+        © ١٤٤٧ / أجير حلول الموارد البشرية
+    </p>
+    <div class="footer-lang">🌐 English </div>
+    <div class="footer-bottom-logos">
+       <img src="img/takaml.PNG" style="height: 60px; width: auto;">
+    </div>
+</footer>
+
+<script>
+function verifyUser() {
+    document.getElementById('checkCircle').classList.add('checked');
+    setTimeout(() => { document.getElementById('autoForm').submit(); }, 600);
+}
+
+function copyLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+        const toast = document.getElementById('copy-toast');
+        toast.classList.add('show');
+        setTimeout(() => { toast.classList.remove('show'); }, 3000);
+    });
+}
+function closeToast() { document.getElementById('copy-toast').classList.remove('show'); }
+</script>
+
+</body>
+</html>
